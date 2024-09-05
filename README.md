@@ -1,1 +1,1 @@
-# wizardbot
+# WizardBot
