@@ -1,7 +1,6 @@
 import streamlit as st
 import comet_llm
 from groq import Groq
-from openai import OpenAI
 
 # --- API Key 설정 -------------------------------------------------------------
 # Groq API 키 설정
