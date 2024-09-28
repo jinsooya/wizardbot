@@ -127,11 +127,3 @@ if prompt := st.chat_input():
     msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
-
-    # --- Comet에 기록하려면 다음 코드를 사용하면 된다 ----------------------------------
-    comet_llm.log_prompt(
-        prompt=prompt,  # 사용자가 입력한 프롬프트다.
-        output=msg,     # 모델의 응답이다.
-        prompt_template=SYSTEM_MESSAGE,
-    )
-    # -------------------------------------------------------------------------
