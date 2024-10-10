@@ -6,7 +6,7 @@ from groq import Groq
 # Groq API 키 설정
 GROQ_API_KEY = st.secrets['GROQ_API_KEY'] 
 # Comet API 키 설정
-COMET_API_KEY = st.secrets['COMET_API_KEY'] 
+OPIK_API_KEY = st.secrets['OPIK_API_KEY'] 
 
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
@@ -129,7 +129,7 @@ if prompt := st.chat_input():
     # 화면에 사용자 입력을 출력한다.
     st.chat_message('user').write(prompt)
     
-    # GPT 모델을 사용하여 응답을 생성한다.
+    # LLM 모델을 사용하여 응답을 생성한다.
     response = client.chat.completions.create(
         model='gemma2-9b-it',
         messages=context + st.session_state['messages']  # context와 대화 기록을 결합하여 모델에 전달한다.
