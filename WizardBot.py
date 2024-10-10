@@ -16,10 +16,7 @@ client = Groq(api_key=GROQ_API_KEY)
 opik_client = opik.Opik()
 
 # Comet Opik을 설정
-opik.configure(
-    api_key=st.secrets(OPIK_API_KEY),
-    workspace='ontology'
-)
+opik.configure(api_key=OPIK_API_KEY, workspace='ontology')
 
 # Comet Opik 프로젝트에 연결
 # Comet Opik 프로젝트와 연결하면 모델의 학습 과정이나 결과를 기록하고 관리할 수 있게 해준다.
