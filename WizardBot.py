@@ -11,10 +11,6 @@ OPIK_API_KEY = st.secrets['OPIK_API_KEY']
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
 
-# Opik 클라이언트 객체 생성 
-# 이후에 trace와 span 객체 생성에 이 클라이언트를 사용하게 된다.
-opik_client = opik.Opik()
-
 # Comet Opik을 설정
 opik.configure(api_key=OPIK_API_KEY, workspace='ontology')
 
