@@ -141,5 +141,5 @@ if prompt := st.chat_input():
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
 
     # --- Comet Opik에 기록 ----------------------------------------------------
-    utils.opik_trace(prompt, msg)
+    utils.opik_trace(prompt, msg, context)
     # -------------------------------------------------------------------------
