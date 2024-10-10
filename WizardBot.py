@@ -1,5 +1,5 @@
 import streamlit as st
-import comet_llm
+import os, utils, opik
 from groq import Groq
 
 # --- API Key 설정 -------------------------------------------------------------
@@ -10,8 +10,20 @@ COMET_API_KEY = st.secrets['COMET_API_KEY']
 
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
-# Comet LLM 초기화
-comet_llm.init(project='wizard_shop_chatbot', api_key=COMET_API_KEY)
+
+# Opik 클라이언트 객체 생성 
+# 이후에 trace와 span 객체 생성에 이 클라이언트를 사용하게 된다.
+opik_client = opik.Opik()
+
+# Comet Opik을 설정
+opik.configure(
+    api_key=st.secrets('OPIK_API_KEY'),
+    workspace='ontology'
+)
+
+# Comet Opik 프로젝트에 연결
+# Comet Opik 프로젝트와 연결하면 모델의 학습 과정이나 결과를 기록하고 관리할 수 있게 해준다.
+os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'  
 
 # --- 마법 아이템 목록 ------------------------------------------------------------
 # 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
@@ -110,7 +122,7 @@ if 'messages' not in st.session_state:
 for msg in st.session_state.messages:  
     st.chat_message(msg['role']).write(msg['content'])  
 
-# 사용자 입력을 처리하고 GPT 모델의 응답을 생성한다.
+# 사용자 입력을 처리하고 LLM 모델의 응답을 생성한다.
 if prompt := st.chat_input():  
     # 사용자 입력을 대화 기록에 추가한다.  
     st.session_state['messages'].append({'role': 'user', 'content': prompt}) 
@@ -127,3 +139,7 @@ if prompt := st.chat_input():
     msg = response.choices[0].message.content  # 모델의 응답 메시지 내용을 추출한다.
     st.session_state['messages'].append({'role': 'assistant', 'content': msg})
     st.chat_message('assistant').write(msg)   # 화면에 모델의 응답을 출력한다.
+
+  # --- Comet Opik에 기록 ----------------------------------------------------
+  utils.opik_trace(prompt, msg)
+  # -------------------------------------------------------------------------
