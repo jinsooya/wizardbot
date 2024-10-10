@@ -1,4 +1,4 @@
-def opik_trace(input_data, output):
+def opik_trace(input_data, output, context):
     trace = opik_client.trace(
         name='chat',
         input={'user_input': input_data},
