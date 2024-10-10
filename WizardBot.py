@@ -17,7 +17,7 @@ opik_client = opik.Opik()
 
 # Comet Opik을 설정
 opik.configure(
-    api_key=st.secrets('OPIK_API_KEY'),
+    api_key=st.secrets(OPIK_API_KEY),
     workspace='ontology'
 )
 
