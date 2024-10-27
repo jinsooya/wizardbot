@@ -2,11 +2,8 @@ import streamlit as st
 import os, utils, opik
 from groq import Groq
 
-# --- API Key 설정 -------------------------------------------------------------
-# Groq API 키 설정
-GROQ_API_KEY = st.secrets['GROQ_API_KEY'] 
 # Groq 초기화
-client = Groq(api_key=GROQ_API_KEY)
+client = Groq()
 
 # --- 마법 아이템 목록 ------------------------------------------------------------
 # 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
