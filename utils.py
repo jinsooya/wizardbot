@@ -1,6 +1,6 @@
 import opik
 
-opik_client = opik.Opik(project_name='Wizard Chatbot Github Demo')
+opik_client = opik.Opik(workspace='wizard-bot', project_name='Wizard Chatbot Github Demo')
 
 def opik_trace(input_data, output, context):
     trace = opik_client.trace(
