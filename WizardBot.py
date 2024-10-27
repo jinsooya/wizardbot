@@ -5,14 +5,8 @@ from groq import Groq
 # --- API Key 설정 -------------------------------------------------------------
 # Groq API 키 설정
 GROQ_API_KEY = st.secrets['GROQ_API_KEY'] 
-# Comet API 키 설정
-OPIK_API_KEY = st.secrets['OPIK_API_KEY'] 
-
 # Groq 초기화
 client = Groq(api_key=GROQ_API_KEY)
-
-# Comet Opik을 설정
-opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot')
 
 # --- 마법 아이템 목록 ------------------------------------------------------------
 # 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
