@@ -14,10 +14,6 @@ client = Groq(api_key=GROQ_API_KEY)
 # Comet Opik을 설정
 opik.configure(api_key=OPIK_API_KEY, workspace='wizard-bot')
 
-# Comet Opik 프로젝트에 연결
-# Comet Opik 프로젝트와 연결하면 모델의 학습 과정이나 결과를 기록하고 관리할 수 있게 해준다.
-os.environ['OPIK_PROJECT_NAME'] = 'Wizard Chatbot Demo'  
-
 # --- 마법 아이템 목록 ------------------------------------------------------------
 # 마법 상점에서 판매할 마법 아이템 목록을 문자열로 정의한다.
 # 이 아이템 목록은 상점에서 판매할 마법 물품에 대한 정보를 포함하고 있다.
