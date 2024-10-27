@@ -4,7 +4,7 @@ opik_client = opik.Opik(project_name='Wizard Chatbot Github Demo')
 
 def opik_trace(input_data, output, context):
     trace = opik_client.trace(
-        name='chat',
+        name='chat-github',
         input={'user_input': input_data},
         output={'response': output}
     )
